@@ -1,0 +1,76 @@
+.card {
+  border-radius: 12px;
+  border: none;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.1);
+}
+
+.form-control-lg {
+  padding: 0.75rem 1rem;
+  font-size: 1.1rem;
+}
+
+.form-label {
+  color: #495057;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-lg {
+  font-size: 1.1rem;
+  min-height: 54px;
+}
+
+.invalid-feedback {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.form-text {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* Loading spinner */
+.spinner-border {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .d-flex.gap-3 {
+    flex-direction: column;
+  }
+  
+  .btn-lg {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+}

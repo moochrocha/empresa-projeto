@@ -1,0 +1,80 @@
+<!-- 
+  Componente: Listar Departamentos
+  Descrição: Exibe uma tabela com todos os departamentos cadastrados,
+  permitindo criar, editar, visualizar funcionários e excluir departamentos.
+-->
+
+<!-- Cabeçalho da página com título e botão para criar novo departamento -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <!-- Título principal -->
+    <h1 class="h3 fw-bold text-dark mb-1">Departamentos</h1>
+    <!-- Subtítulo explicativo -->
+    <p class="text-muted">Gerencie os departamentos da empresa</p>
+  </div>
+  <!-- Botão para navegar até o formulário de novo departamento -->
+  <button class="btn btn-primary btn-lg" routerLink="/departamentos/novo">
+    <i class="bi bi-plus-circle me-2"></i>Novo Departamento
+  </button>
+</div>
+
+<!-- Cartão que contém a listagem -->
+<div class="card shadow-sm">
+  <div class="card-body p-0">
+    <!-- Exibição quando não há departamentos cadastrados -->
+    <div *ngIf="departamentos.length === 0" class="text-center py-5">
+      <!-- Ícone representativo -->
+      <i class="bi bi-building text-muted" style="font-size: 3rem"></i>
+      <!-- Mensagem informativa -->
+      <p class="text-muted mt-3">Nenhum departamento cadastrado</p>
+      <!-- Botão para criar o primeiro departamento -->
+      <button class="btn btn-primary" routerLink="/departamentos/novo">
+        <i class="bi bi-plus-circle me-2"></i>Criar Primeiro Departamento
+      </button>
+    </div>
+
+    <!-- Tabela exibida quando há departamentos cadastrados -->
+    <div *ngIf="departamentos.length > 0" class="table-responsive">
+      <table class="table table-hover align-middle mb-0 rounded-top overflow-hidden">
+        <!-- Cabeçalho da tabela -->
+        <thead class="table-primary">
+          <tr>
+            <th class="border-0 ps-4">Nome</th>
+            <th class="border-0 text-center">Sigla</th>
+            <th class="border-0 text-end pe-4">Ações</th>
+          </tr>
+        </thead>
+
+        <!-- Corpo da tabela com iteração sobre a lista de departamentos -->
+        <tbody>
+          <tr *ngFor="let departamento of departamentos">
+            <!-- Nome do departamento -->
+            <td class="fw-semibold ps-4">{{ departamento.nome }}</td>
+            <!-- Sigla destacada com badge -->
+            <td class="text-center">
+              <span class="badge bg-secondary px-3 py-2">{{ departamento.sigla }}</span>
+            </td>
+            <!-- Botões de ação -->
+            <td class="text-end pe-4">
+              <!-- Visualizar funcionários vinculados -->
+              <button
+                class="btn btn-outline-primary btn-sm me-2"
+                (click)="verFuncionarios(departamento.id)"
+              >
+                <i class="bi bi-people me-1"></i>Funcionários
+              </button>
+              <!-- Editar departamento -->
+              <button class="btn btn-outline-warning btn-sm me-2" (click)="editar(departamento.id)">
+                <i class="bi bi-pencil me-1"></i>Editar
+              </button>
+              <!-- Excluir departamento -->
+              <button class="btn btn-outline-danger btn-sm" (click)="excluir(departamento.id)">
+                <i class="bi bi-trash me-1"></i>Excluir
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,137 @@
+<!-- Cabeçalho da página - Mostra título dinâmico (Novo/Editar) -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="h3 fw-bold text-dark mb-0">
+    {{ isEdit ? 'Editar Departamento' : 'Novo Departamento' }}
+  </h1>
+  <!-- <button class="btn btn-secondary" routerLink="/departamentos">
+    <i class="bi bi-arrow-left me-2"></i>Voltar
+  </button> -->
+</div>
+
+<!-- Card principal que envolve todo o formulário -->
+<div class="card shadow-sm">
+  <div class="card-body">
+    <!-- Formulário reativo - (ngSubmit) chama save() quando enviado -->
+    <form (ngSubmit)="save()" #f="ngForm" novalidate>
+      <!-- Campo Nome do departamento-->
+      <div class="mb-4">
+        <label for="nome" class="form-label fw-semibold">
+          Nome do Departamento <span class="text-danger">*</span>
+          <!-- Asterisco vermelho indica obrigatório -->
+        </label>
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          [class.is-invalid]="f.submitted && (!departamento.nome || !departamento.nome.trim())"
+          [class.is-valid]="departamento.nome && departamento.nome.trim()"
+          id="nome"
+          name="nome"
+          [(ngModel)]="departamento.nome"
+          placeholder="Digite o nome do departamento"
+          required
+          minlength="2"
+          maxlength="100"
+        />
+
+        <!-- Mensagens de erro validação -->
+        <div
+          class="invalid-feedback"
+          *ngIf="f.submitted && (!departamento.nome || !departamento.nome.trim())"
+        >
+          O nome do departamento é obrigatório.
+        </div>
+        <div class="invalid-feedback" *ngIf="departamento.nome && departamento.nome.length < 2">
+          O nome deve ter pelo menos 2 caracteres.
+        </div>
+        <div class="valid-feedback">Nome válido!</div>
+      </div>
+
+      <!-- Campo Sigla do departamento-->
+      <div class="mb-4">
+        <label for="sigla" class="form-label fw-semibold">
+          Sigla do Departamento <span class="text-danger">*</span>
+        </label>
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          [class.is-invalid]="f.submitted && (!departamento.sigla || !departamento.sigla.trim())"
+          [class.is-valid]="departamento.sigla && departamento.sigla.trim()"
+          id="sigla"
+          name="sigla"
+          [(ngModel)]="departamento.sigla"
+          placeholder="Digite a sigla (ex: RH, TI, VEN)"
+          required
+          minlength="2"
+          maxlength="10"
+          pattern="[A-Za-z0-9]+"
+        />
+        <!-- Regex: apenas letras e números -->
+
+        <!-- Mensagens de erro validação sigla -->
+        <div
+          class="invalid-feedback"
+          *ngIf="f.submitted && (!departamento.sigla || !departamento.sigla.trim())"
+        >
+          A sigla do departamento é obrigatória.
+        </div>
+        <div class="invalid-feedback" *ngIf="departamento.sigla && departamento.sigla.length < 2">
+          A sigla deve ter pelo menos 2 caracteres.
+        </div>
+        <div class="valid-feedback">Sigla válida!</div>
+        <div class="form-text">Use 2 a 10 caracteres (apenas letras e números)</div>
+      </div>
+
+      <!-- Loading - aparece quando carregando dados (edição) -->
+      <div *ngIf="loading" class="text-center py-3">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Carregando...</span>
+        </div>
+        <p class="text-muted mt-2">Carregando departamento...</p>
+      </div>
+
+      <!-- Mensagem de Erro -->
+      <div *ngIf="error" class="alert alert-danger" role="alert">
+        <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+      </div>
+
+      <!-- Botões de Ação -->
+      <div class="d-flex gap-3 pt-3">
+        <!-- Botão Salvar/Atualizar -->
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg flex-fill"
+          [disabled]="
+            loading ||
+            !departamento.nome.trim() ||
+            !departamento.sigla.trim() ||
+            departamento.nome.length < 2 ||
+            departamento.sigla.length < 2
+          "
+        >
+          <i
+            class="bi"
+            [class.bi-check-circle]="!loading"
+            [class.bi-hourglass-split]="loading"
+            me-2
+          ></i>
+          {{ isEdit ? 'Atualizar' : 'Criar' }} Departamento
+        </button>
+
+        <!-- Botão Cancelar - volta para lista -->
+        <button
+          type="button"
+          class="btn btn-outline-danger btn-lg"
+          (click)="cancel()"
+          [disabled]="loading"
+        >
+          <i class="bi bi-x-circle me-2"></i>Cancelar
+        </button>
+      </div>
+
+      <!-- Indicador de campos obrigatórios -->
+      <div class="mt-3">
+        <small class="text-muted"> <span class="text-danger">*</span> Campos obrigatórios </small>
+      </div>
+    </form>
+  </div>
+</div>

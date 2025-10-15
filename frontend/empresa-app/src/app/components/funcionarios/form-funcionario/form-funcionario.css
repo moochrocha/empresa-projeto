@@ -1,0 +1,17 @@
+.card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.img-thumbnail {
+  border: 2px solid #dee2e6;
+  border-radius: 0.375rem;
+}
+
+.btn {
+  min-width: 120px;
+}

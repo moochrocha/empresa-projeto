@@ -1,0 +1,116 @@
+<!-- 
+  Componente: Formulário de Funcionário
+  Descrição: Responsável por criar ou editar um funcionário. 
+  Inclui campos para nome, RG, foto (URL) e seleção de departamento.
+-->
+
+<!-- Cabeçalho com título dinâmico e botão de retorno -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <!-- Exibe título conforme o modo atual (criação ou edição) -->
+  <h2>{{ isEditando ? 'Editar Funcionário' : 'Novo Funcionário' }}</h2>
+  <!-- Botão para voltar à listagem -->
+  <button class="btn btn-secondary" (click)="cancelar()">← Voltar</button>
+</div>
+
+<!-- Cartão principal do formulário -->
+<div class="card">
+  <div class="card-body">
+    <!-- Formulário com binding bidirecional (ngModel) e envio via ngSubmit -->
+    <form (ngSubmit)="salvarFuncionario()">
+      <!-- Campo: Nome -->
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome *</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nome"
+          [(ngModel)]="funcionario.nome"
+          name="nome"
+          placeholder="Digite o nome do funcionário"
+          required
+        />
+      </div>
+
+      <!-- Campo: RG -->
+      <div class="mb-3">
+        <label for="rg" class="form-label">RG *</label>
+        <input
+          type="text"
+          class="form-control"
+          id="rg"
+          [(ngModel)]="funcionario.rg"
+          name="rg"
+          placeholder="Digite o RG do funcionário"
+          required
+        />
+      </div>
+
+      <!-- Campo: Foto (URL) -->
+      <div class="mb-3">
+        <label for="foto" class="form-label">Foto (URL)</label>
+        <input
+          type="text"
+          class="form-control"
+          id="foto"
+          [(ngModel)]="funcionario.foto"
+          name="foto"
+          placeholder="Cole a URL da foto do funcionário"
+        />
+        <div class="form-text">Cole uma URL de imagem. Ex: https://exemplo.com/foto.jpg</div>
+      </div>
+
+      <!-- Preview da Foto (exibido somente se houver uma URL preenchida) -->
+      <div class="mb-3" *ngIf="funcionario.foto">
+        <label class="form-label">Preview da Foto:</label>
+        <div>
+          <img
+            [src]="funcionario.foto"
+            alt="Preview"
+            class="img-thumbnail"
+            style="max-width: 200px; max-height: 200px"
+          />
+        </div>
+      </div>
+
+      <!-- Campo: Departamento -->
+      <div class="mb-3">
+        <label for="departamento" class="form-label">Departamento *</label>
+        <select
+          class="form-select"
+          id="departamento"
+          [(ngModel)]="funcionario.departamentoId"
+          name="departamentoId"
+          [disabled]="!isEditando && funcionario.departamentoId > 0"
+        >
+          <option value="">Selecione um departamento</option>
+          <option *ngFor="let departamento of departamentos" [value]="departamento.id">
+            {{ departamento.nome }} ({{ departamento.sigla }})
+          </option>
+        </select>
+        <!-- Informação exibida caso o departamento tenha sido pré-selecionado -->
+        <div *ngIf="!isEditando && funcionario.departamentoId > 0" class="form-text">
+          O departamento foi pré-selecionado automaticamente.
+        </div>
+      </div>
+
+      <!-- Grupo de botões principais -->
+      <div class="d-flex gap-2">
+        <!-- Botão para salvar ou atualizar -->
+        <button type="submit" class="btn btn-success">
+          {{ isEditando ? 'Atualizar' : 'Criar' }} Funcionário
+        </button>
+
+        <!-- <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button> Botão antigo -->
+        <!-- Botão de cancelamento (vermelho e padronizado) -->
+        <button type="button" class="btn btn-outline-danger btn-lg" (click)="cancelar()">
+          <i class="bi bi-x-circle me-2"></i>Cancelar
+        </button>
+      </div>
+
+      <!-- Rodapé informativo com legenda de campos obrigatórios -->
+      <div class="mt-3">
+        <small class="text-muted"> <span class="text-danger">*</span> Campos obrigatórios </small>
+      </div>
+    </form>
+  </div>
+</div>

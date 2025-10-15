@@ -1,0 +1,29 @@
+# === Visual Studio / .NET ===
+.vs/
+*.user
+bin/
+obj/
+*.suo
+
+# === Node / Angular ===
+node_modules/
+dist/
+.angular/
+npm-debug.log*
+yarn-error.log*
+
+# === Common ===
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# DB files
+empresa.db
+*.db
+*.sqlite
+
+# Secrets / env
+.env
+secrets.json
+appsettings.*.json.user

@@ -1,0 +1,21 @@
+<!-- Barra de navegação moderna -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/departamentos">
+      🏢 <span class="ms-2">EvoSystems</span>
+    </a>
+    
+    <div class="navbar-nav">
+      <a class="nav-link" routerLink="/departamentos" routerLinkActive="active">
+        📊 Departamentos
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Conteúdo principal -->
+<main class="container-fluid bg-light min-vh-100">
+  <div class="container py-4">
+    <router-outlet></router-outlet>
+  </div>
+</main>

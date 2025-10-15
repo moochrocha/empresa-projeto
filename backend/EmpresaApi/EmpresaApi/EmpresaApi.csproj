@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+	<!--
+    Define que este projeto usa o SDK "Microsoft.NET.Sdk.Web",
+    próprio para aplicações web (APIs, sites, etc.) com ASP.NET Core.
+    Esse SDK já inclui suporte a Controllers, Middleware, Swagger, etc.
+  -->
+  <PropertyGroup>
+	  <!--
+      Define o framework alvo: .NET 8.0 (LTS - Long Term Support)
+      Isso significa que o código será compilado para rodar em ambientes compatíveis com .NET 8.
+    -->
+    <TargetFramework>net8.0</TargetFramework>
+	  <!--
+      Habilita o suporte a tipos anuláveis (nullable reference types),
+      que ajuda a prevenir erros de referência nula em tempo de compilação.
+    -->
+    <Nullable>enable</Nullable>
+	  <!--
+      Habilita "usings implícitos", que importam automaticamente
+      namespaces comuns do .NET (System, System.Linq, etc.),
+      reduzindo a necessidade de adicionar manualmente vários "using" no topo de cada arquivo.
+    -->
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<!--
+      Pacote responsável pelo provedor de banco de dados SQLite do Entity Framework Core.
+      Ele permite que a aplicação se conecte e execute operações CRUD em um banco SQLite.
+      Versão: 9.0.9 (compatível com .NET 8).
+    -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.9" />
+	  <!--
+      Ferramentas do Entity Framework Core, necessárias para comandos de migração e scaffold.
+      - Permite criar e atualizar o banco via terminal (ex: "dotnet ef migrations add InitialCreate")
+      - Atributos "IncludeAssets" e "PrivateAssets" controlam como essas dependências são propagadas.
+    -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.9">
+		<!-- Define quais tipos de ativos do pacote estão disponíveis para o projeto -->
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		<!-- Impede que este pacote seja transitivamente exportado para outros projetos -->
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+	  <!--
+      Pacote Swashbuckle.AspNetCore: responsável por integrar o Swagger/OpenAPI.
+      - Gera automaticamente uma documentação interativa da API.
+      - Permite testar endpoints diretamente pelo navegador.
+    -->
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+  </ItemGroup>
+
+</Project>
