@@ -38,7 +38,7 @@ npm install bootstrap
 ### 1️⃣ Clonar o repositório
 ```
 git clone https://github.com/<seu-usuario>/empresa-projeto.git
-cd empresa-projeto
+## cd empresa-projeto
 ```
 
 ### ✅ Executar Backend
@@ -48,7 +48,7 @@ dotnet restore
 dotnet ef database update
 dotnet run
 ```
-A API será iniciada em:
+### A API será iniciada em:
 
 - https://localhost:7117
 - http://localhost:5117
@@ -62,7 +62,9 @@ npm start
 A aplicação estará disponível em:
 - http://localhost:4200
 
-empresa-projeto
+🏗️ Estrutura do Projeto
+
+empresa-projeto 
 │
 ├── backend/
 │   └── EmpresaApi/
