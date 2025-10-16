@@ -94,3 +94,5 @@ empresa-projeto
 ├── README.md
 └── API.md
 ```
+
+📘 A documentação completa da API está disponível em [API.md](./API.md)
