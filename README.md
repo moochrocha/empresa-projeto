@@ -37,8 +37,8 @@ npm install bootstrap
 
 ### 1️⃣ Clonar o repositório
 ```
-git clone https://github.com/<seu-usuario>/empresa-projeto.git
-## cd empresa-projeto
+git clone https://github.com/<seu-usuario>/empresa-projeto.git  
+cd empresa-projeto
 ```
 
 ### ✅ Executar Backend
@@ -63,7 +63,7 @@ A aplicação estará disponível em:
 - http://localhost:4200
 
 🏗️ Estrutura do Projeto
-
+```
 empresa-projeto 
 │
 ├── backend/
@@ -91,3 +91,4 @@ empresa-projeto
 ├── .gitignore
 ├── README.md
 └── API.md
+```
