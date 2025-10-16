@@ -48,7 +48,9 @@ Resposta (201 - Created):
 📋 Listar Departamentos
 
 **GET** `/api/departamentos`
+
 Resposta (200 - OK):
+
 ```json
 [
   { "id": 1, "nome": "Tecnologia da Informação", "sigla": "TI" },
@@ -88,7 +90,6 @@ Resposta (200 - OK):
 Resposta (204 - No Content)  
 Departamento atualizado com sucesso.
 ---
-
 🗑️ Excluir Departamento
 
 **DELETE** `/api/departamentos/{id}`
@@ -96,7 +97,6 @@ Departamento atualizado com sucesso.
 Resposta (204 - No Content)  
 Departamento excluído com sucesso.
 ---
-
 ##👩‍💼 Funcionários
 
 ➕ Criar Funcionário
@@ -112,7 +112,6 @@ Departamento excluído com sucesso.
 ```
 Resposta (201 - Created)
 ---
-
 📋 Listar Funcionários
 
 **GET** `/api/funcionarios`
