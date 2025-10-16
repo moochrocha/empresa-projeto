@@ -31,6 +31,8 @@ O projeto utiliza o **Bootstrap 5** para estilização e responsividade, garanti
 Instalação:
 ```bash
 npm install bootstrap
+```
+
 ---
 
 ## ⚙️ Como Executar o Projeto
