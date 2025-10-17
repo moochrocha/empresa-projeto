@@ -39,7 +39,7 @@ npm install bootstrap
 
 ### 1️⃣ Clonar o repositório
 ```
-git clone https://github.com/<seu-usuario>/empresa-projeto.git  
+git clone https://github.com/moochrocha/empresa-projeto.git  
 cd empresa-projeto
 ```
 
