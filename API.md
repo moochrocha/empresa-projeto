@@ -171,7 +171,7 @@ Você pode testar os endpoints usando:
 
 - Postman
 - Insomnia
-- Swagger UI (/swagger), se habilitado no projeto.
+- Swagger UI (/swagger)
 
 🔐 Códigos de Resposta Comuns
 ```
